@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factures</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1>Factures</h1>
+            <p class="subtitle">Génération automatique de factures conformes</p>
+        </header>
+
+        <section class="dashboard">
+            <div class="stat-card">
+                <span class="stat-label">Total des gains</span>
+                <span class="stat-value" id="totalGains">0,00 €</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Factures générées</span>
+                <span class="stat-value" id="nbFactures">0</span>
+            </div>
+        </section>
+
+        <section class="form-section">
+            <h2>Nouvelle facture</h2>
+
+            <div class="alert alert-error hidden" id="errorBox">
+                <strong>Génération bloquée</strong>
+                <ul id="errorList"></ul>
+            </div>
+
+            <div class="alert alert-success hidden" id="successBox">
+                <span id="successText"></span>
+                <button type="button" class="btn-download hidden" id="btnDownload">Télécharger le PDF</button>
+            </div>
+
+            <form id="factureForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nom">Nom *</label>
+                        <input type="text" id="nom" name="nom" placeholder="Dupont">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom *</label>
+                        <input type="text" id="prenom" name="prenom" placeholder="Jean">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="adresse">Adresse complète *</label>
+                    <textarea id="adresse" name="adresse" rows="2" placeholder="12 rue de la Paix, 75002 Paris, France"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tva">N° TVA (optionnel)</label>
+                        <input type="text" id="tva" name="tva" placeholder="FR12 345678901">
+                    </div>
+                    <div class="form-group">
+                        <label for="tauxTva">Taux TVA (%)</label>
+                        <input type="number" id="tauxTva" name="tauxTva" value="20" min="0" max="100" step="0.1">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description du service *</label>
+                    <textarea id="description" name="description" rows="3" placeholder="Consultation en stratégie digitale — 3 heures"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="montant">Montant HT (€) *</label>
+                    <input type="number" id="montant" name="montant" placeholder="150.00" min="0" step="0.01">
+                </div>
+
+                <button type="submit" class="btn-generate" id="btnGenerate">Générer la facture</button>
+            </form>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
